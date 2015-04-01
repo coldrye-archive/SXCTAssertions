@@ -22,6 +22,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SXCTAssertions/SXCTAssertionsImpl.h>
 
 //! Project version number for SXCTAssertions.
 FOUNDATION_EXPORT double SXCTAssertionsVersionNumber;
@@ -31,4 +32,3 @@ FOUNDATION_EXPORT const unsigned char SXCTAssertionsVersionString[];
 
 // Exports
 
-#import <SXCTAssertions/SXCTAssertionsImpl.h>

@@ -24,6 +24,7 @@
 import Foundation
 import XCTest
 
+
 public func SXCTAssertThrows(
     @autoclosure(escaping) expression: () -> Void, var message: String? = "",
     file: String = __FILE__, line: UInt = __LINE__) {

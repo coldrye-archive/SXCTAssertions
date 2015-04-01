@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		F7686C2D1AC0BAF800ACE2A0 /* SXCTAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C8A54D1ABF5D8F00CD9267 /* SXCTAssertions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7686C2E1AC0BAFE00ACE2A0 /* SXCTAssertionsImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C8A5561ABF676D00CD9267 /* SXCTAssertionsImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7686C2F1AC0BB0500ACE2A0 /* SXCTAssertionsImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A5511ABF5E1D00CD9267 /* SXCTAssertionsImpl.m */; };
-		F7686C301AC0BB0800ACE2A0 /* SXCTAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A5531ABF5EAE00CD9267 /* SXCTAssertions.swift */; };
 		F7686C311AC0BB0D00ACE2A0 /* SXCTAssertionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A54F1ABF5D8F00CD9267 /* SXCTAssertionsTests.swift */; };
 		F7C8A5381ABF5D0000CD9267 /* SXCTAssertions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C8A52C1ABF5D0000CD9267 /* SXCTAssertions.framework */; };
 		F7C8A5501ABF5DC400CD9267 /* SXCTAssertionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A54F1ABF5D8F00CD9267 /* SXCTAssertionsTests.swift */; };
@@ -19,6 +18,7 @@
 		F7C8A5541ABF5EAE00CD9267 /* SXCTAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A5531ABF5EAE00CD9267 /* SXCTAssertions.swift */; };
 		F7C8A5581ABF6D9E00CD9267 /* SXCTAssertionsImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C8A5561ABF676D00CD9267 /* SXCTAssertionsImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7C8A5591ABF6DAA00CD9267 /* SXCTAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C8A54D1ABF5D8F00CD9267 /* SXCTAssertions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7F788DC1AC1FB8A00E2767B /* SXCTAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8A5531ABF5EAE00CD9267 /* SXCTAssertions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,8 +150,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7686C2D1AC0BAF800ACE2A0 /* SXCTAssertions.h in Headers */,
 				F7686C2E1AC0BAFE00ACE2A0 /* SXCTAssertionsImpl.h in Headers */,
+				F7686C2D1AC0BAF800ACE2A0 /* SXCTAssertions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +263,7 @@
 				};
 			};
 			buildConfigurationList = F7C8A5261ABF5D0000CD9267 /* Build configuration list for PBXProject "SXCTAssertions" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -318,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7686C301AC0BB0800ACE2A0 /* SXCTAssertions.swift in Sources */,
+				F7F788DC1AC1FB8A00E2767B /* SXCTAssertions.swift in Sources */,
 				F7686C2F1AC0BB0500ACE2A0 /* SXCTAssertionsImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,11 +367,14 @@
 		F7686C281AC0BA5A00ACE2A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -383,22 +386,34 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
+				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = SXCTAssertions;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
 		F7686C291AC0BA5A00ACE2A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -406,11 +421,20 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
+				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = SXCTAssertions;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = build;
 			};
 			name = Release;
 		};
@@ -553,24 +577,35 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks",
 				);
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = SXCTAssertions;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -579,23 +614,34 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks",
 				);
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = SXCTAssertions;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SYMROOT = build;
 			};
 			name = Release;
 		};
